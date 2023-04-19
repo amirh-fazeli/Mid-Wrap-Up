@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Random;
 
 public class Lecture5Exercises {
@@ -21,7 +22,25 @@ public class Lecture5Exercises {
      *   lecture 5 page 14
      */
     public String strongPassword(int length) throws Exception {
-        return null;
+        String password;
+        ArrayList <Character> opts = new ArrayList<>();
+        optMaker(opts);
+
+        while (true) {
+            password = "";
+
+            for (int i = 0; i < length; i++) {
+                password = password + opts.get(randomNum(0, opts.size() - 1));
+            }
+
+            System.out.println(password);
+
+            String par ="(?=.*[0-9])(?=.*[a-z])(?=.*[.+*?^$(){}|])";
+
+            if (password.matches(par)){
+                return password;
+            }
+        }
     }
 
     /*
@@ -85,4 +104,19 @@ public class Lecture5Exercises {
         }
     }
 
+    public static void optMaker(ArrayList<Character> opts){
+        for(int i=48;i<58;i++){
+            opts.add((char) i);
+        }
+
+        for(int i=97;i<123;i++){
+            opts.add((char) i);
+        }
+
+        String specials = ".+*?^$(){}|";
+
+        for (int i=0;i<specials.length();i++){
+            opts.add(specials.charAt(i));
+        }
+    }
 }
