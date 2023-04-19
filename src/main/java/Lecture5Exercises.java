@@ -29,6 +29,7 @@ public class Lecture5Exercises {
         while (true) {
             password = "";
 
+
             for (int i = 0; i < length; i++) {
                 password = password + opts.get(randomNum(0, opts.size() - 1));
             }
