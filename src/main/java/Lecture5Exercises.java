@@ -36,7 +36,7 @@ public class Lecture5Exercises {
 
             System.out.println(password);
 
-            String par ="(?=.*[0-9])(?=.*[a-z])(?=.*[.+*?^$(){}|])";
+            String par ="([a-z]+)(\\d+)([+*?^$(){}&|]+)";
 
             if (password.matches(par)){
                 return password;
