@@ -1,3 +1,6 @@
+import java.lang.reflect.Array;
+import java.util.Locale;
+
 public class Lecture4Exercises {
 
     /*
@@ -5,7 +8,14 @@ public class Lecture4Exercises {
      *   lecture 4 page 15
      */
     public long factorial(int n) {
-        return 0L;
+        int ans = 1,i=n;
+
+        while (i!=0){
+            ans*=i;
+            i--;
+        }
+
+        return ans;
     }
 
     /*
@@ -14,7 +24,21 @@ public class Lecture4Exercises {
      *   lecture 4 page 19
      */
     public long fibonacci(int n) {
-        return 0;
+        Long a= Long.valueOf(1),b= Long.valueOf(1),i= Long.valueOf(2);
+
+        while(i<n){
+            a+=b;
+            b+=a;
+            i+=2;
+        }
+
+        if(i==n){
+            return b;
+        }
+
+        else{
+            return a;
+        }
     }
 
     /*
@@ -22,7 +46,13 @@ public class Lecture4Exercises {
      *   lecture 4 page 19
      */
     public String reverse(String word) {
-        return null;
+        String reversed="";
+
+        for (int i=word.length()-1;i>=0;i--){
+            reversed = reversed + word.charAt(i);
+        }
+
+        return reversed;
     }
 
     /*
@@ -32,7 +62,10 @@ public class Lecture4Exercises {
      *   lecture 4 page 19
      */
     public boolean isPalindrome(String line) {
-        return false;
+        String line1 = line;
+        line1 = line1.replaceAll("\\s", "");
+        line1 = line1.toLowerCase(Locale.ROOT);
+        return reverse(line1).equals(line1);
     }
 
     /*
@@ -47,6 +80,18 @@ public class Lecture4Exercises {
      *   lecture 4 page 26
      */
     public char[][] dotPlot(String str1, String str2) {
-        return null;
+        char [][] ans = new char[str1.length()][str2.length()];
+        for (int i=0;i<str1.length();i++){
+            for (int j=0;j<str2.length();j++){
+                if (str1.charAt(i)==str2.charAt(j)){
+                    ans[i][j]='*';
+                }
+                else{
+                    ans[i][j]=' ';
+                }
+            }
+        }
+
+        return ans;
     }
 }
